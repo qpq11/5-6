@@ -63,6 +63,10 @@ void firstreq(void)
 			PassedTests += TestQuad(1.0, -3.0, 2.0, 2.0, 1.0, TwoRoots);
 			PassedTests += TestQuad(0.0, 0.0, 7.8, 0.0, 0.0, NoRoots);
 			printf("\nПройдено тестов %d из 4\n\n", PassedTests);
+			/*for (i=0; i<20; i++){
+				fscanf("%lf %lf %lf %lf %lf %d", &at, &bt, &ct, &x1t, &x2t, &rcountt);
+				PassedTests += TestQuad(at, bt, ct, x1t, x2t, rcountt);
+			}*/
 	}
 	else if (strcmp(tests, "нет")==0){
 	}
