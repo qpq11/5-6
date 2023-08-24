@@ -24,7 +24,7 @@ RootsCount TypeEquation(double a, double b, double c,
 }
 
 int TestQuad(double a, double b, double c, double x1ref, 
-			double x2ref, RootsCount rcountref)
+			double x2ref, int rcountref)
 {	
 	assert(&x1ref != NULL);
 	assert(&x2ref != NULL);
@@ -37,16 +37,16 @@ int TestQuad(double a, double b, double c, double x1ref,
 	assert(isfinite(c));
 	double x1 = 0;
 	double x2 = 0;
-	RootsCount rcount = InfiniteRoots;
-	rcount= TypeEquation(a, b, c, &x1, &x2);
+	int rcount = -1;
+	rcount= (int) TypeEquation(a, b, c, &x1, &x2);
 	if ((fabs(x1-x1ref)<EPS) && (fabs(x2-x2ref)<EPS) && (fabs(rcount-rcountref)<EPS))
 	{
-		printf("Ð’ÑÑ‘ Ð¾Ðº\n");
+		printf("Âñ¸ îê\n");
 		return 1;
 	}
 	else
 	{
-		printf("ÐÐ°Ð¹Ð´ÐµÐ½Ð¾ Ð½ÐµÑÐ¾Ð¾Ñ‚Ð²ÐµÑ‚ÑÑ‚Ð²Ð¸Ðµ! \n\n ÐŸÑ€Ð¾Ð²ÐµÑ€ÐºÐ° Ð´Ð°Ð½Ð½Ñ‹Ñ…: \n x1 = %lf, Ð¾Ð¶Ð¸Ð´Ð°Ð»Ð¾ÑÑŒ %lf\n x2 = %lf, Ð¾Ð¶Ð¸Ð´Ð°Ð»Ð¾ÑÑŒ %lf\n ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ ÐºÐ¾Ñ€Ð½ÐµÐ¹ = %d, Ð¾Ð¶Ð¸Ð´Ð°Ð»Ð¾ÑÑŒ %d\n", x1, x1ref, x2, x2ref, rcount, rcountref);
+		printf("Íàéäåíî íåñîîòâåòñòâèå! \n\n Ïðîâåðêà äàííûõ: \n x1 = %lf, îæèäàëîñü %lf\n x2 = %lf, îæèäàëîñü %lf\n êîëè÷åñòâî êîðíåé = %d (-1 - áåñêîíå÷íî ðåøåíèé), îæèäàëîñü %d\n", x1, x1ref, x2, x2ref, rcount, rcountref);
 		return 0;
 	}
 }
@@ -54,25 +54,37 @@ int TestQuad(double a, double b, double c, double x1ref,
 void firstreq(void)
 {
 	char tests[4]={};
-	puts("ÐÐµ Ð¶ÐµÐ»Ð°ÐµÑ‚Ðµ Ð»Ð¸ ÑÐ½Ð°Ñ‡Ð°Ð»Ð° Ð¿Ñ€Ð¾Ð²ÐµÑÑ‚Ð¸ Ð¿Ñ€Ð¾Ð³Ñ€Ð°Ð¼Ð¼Ñƒ Ñ‡ÐµÑ€ÐµÐ· Ñ‚ÐµÑÑ‚Ñ‹?");
+	puts("Íå æåëàåòå ëè ñíà÷àëà ïðîâåñòè ïðîãðàììó ÷åðåç òåñòû?");
 	scanf("%s", tests);
-	if (strcmp(tests, "Ð´Ð°")==0){		
+	if (strcmp(tests, "äà")==0){		
 			int PassedTests = 0;
-			PassedTests += TestQuad(0.0, 0.0, 0.0, 0.0, 0.0, InfiniteRoots);
+			FILE * fp;
+			fp=fopen("tests.txt", "r");
+			int TestsCount = 0;
+			//int StringCount = 0;
+			/*PassedTests += TestQuad(0.0, 0.0, 0.0, 0.0, 0.0, InfiniteRoots);
 			PassedTests += TestQuad(1.0, 0.0, 0.0, 0.0, 0.0, OneRoot);
 			PassedTests += TestQuad(1.0, -3.0, 2.0, 2.0, 1.0, TwoRoots);
 			PassedTests += TestQuad(0.0, 0.0, 7.8, 0.0, 0.0, NoRoots);
-			printf("\nÐŸÑ€Ð¾Ð¹Ð´ÐµÐ½Ð¾ Ñ‚ÐµÑÑ‚Ð¾Ð² %d Ð¸Ð· 4\n\n", PassedTests);
-			/*for (i=0; i<20; i++){
-				fscanf("%lf %lf %lf %lf %lf %d", &at, &bt, &ct, &x1t, &x2t, &rcountt);
+			printf("\nÏðîéäåíî òåñòîâ %d èç 4\n\n", PassedTests);*/
+			double at, bt, ct = 0;
+			double x1t, x2t = 0;
+			int rcountt = 0;
+			//char TestString[64];
+			while(fscanf(fp, "%lf %lf %lf %lf %lf %d", &at, &bt, &ct, &x1t, &x2t, &rcountt) != EOF) {
 				PassedTests += TestQuad(at, bt, ct, x1t, x2t, rcountt);
-			}*/
+				TestsCount++;
+				printf("\nÏðîéäåíî òåñòîâ %d èç %d \n", PassedTests, TestsCount);
+				fgetc(fp);
+			}
+			fclose(fp);
 	}
-	else if (strcmp(tests, "Ð½ÐµÑ‚")==0){
+	else if (strcmp(tests, "íåò")==0){
+		return;
 	}
 	else
 	{
-			puts("Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ \"Ð´Ð°\" Ð¸Ð»Ð¸ \"Ð½ÐµÑ‚\", Ð¸Ð½Ð°Ñ‡Ðµ Ð½Ð¸Ñ‡ÐµÐ³Ð¾ Ð½Ðµ Ð±ÑƒÐ´ÐµÑ‚ Ñ€Ð°Ð±Ð¾Ñ‚Ð°Ñ‚ÑŒ(((");
+			puts("Ââåäèòå \"äà\" èëè \"íåò\", èíà÷å íè÷åãî íå áóäåò ðàáîòàòü(((");
 			firstreq();
 	}
 }
@@ -85,34 +97,35 @@ void PrintingRoots(RootsCount rcount, double x1, double x2)
 	switch(rcount)
 	{
 		case InfiniteRoots:  
-			puts("Ð‘ÐµÑÐºÐ¾Ð½ÐµÑ‡Ð½Ð¾ Ñ€ÐµÑˆÐµÐ½Ð¸Ð¹");
+			puts("Áåñêîíå÷íî ðåøåíèé");
 			break;
 		case NoRoots:
-			puts("Ð ÐµÑˆÐµÐ½Ð¸Ð¹ Ð½ÐµÑ‚");
+			puts("Ðåøåíèé íåò");
 			break;
 		case OneRoot:
-			printf("Ð ÐµÑˆÐµÐ½Ð¸Ðµ Ð¾Ð´Ð½Ð¾, ÑÑ‚Ð¾ %lf", x1);
+			printf("Ðåøåíèå îäíî, ýòî %lf", x1);
 			break;
 		case TwoRoots:
-			printf("Ð ÐµÑˆÐµÐ½Ð¸Ð¹ Ð´Ð²Ð°, ÑÑ‚Ð¾ %lf Ð¸ %lf", x1, x2);
+			printf("Ðåøåíèé äâà, ýòî %lf è %lf", x1, x2);
 			break;
 		default:
-			printf("Ð§Ñ‚Ð¾-Ñ‚Ð¾ Ð¿Ð¾ÑˆÐ»Ð¾ Ð½Ðµ Ñ‚Ð°Ðº, Ð¿Ñ€Ð¾Ð²ÐµÑ€ÑŒÑ‚Ðµ Ð²Ñ…Ð¾Ð´Ð½Ñ‹Ðµ Ð´Ð°Ð½Ð½Ñ‹Ðµ");
+			printf("×òî-òî ïîøëî íå òàê, ïðîâåðüòå âõîäíûå äàííûå");
 			break;
 	}
 }
 
 void Input(double* a, double* b, double* c)
 {	
-	printf("Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ ÐºÐ¾ÑÑ„Ñ„Ð¸Ñ†Ð¸ÐµÐ½Ñ‚Ñ‹ a, b Ð¸ c ÑƒÑ€Ð°Ð²Ð½ÐµÐ½Ð¸Ñ Ñ‚Ð¸Ð¿Ð° a*x^2+b*x+c=0\n");
+	printf("Ââåäèòå êîýôôèöèåíòû a, b è c óðàâíåíèÿ òèïà a*x^2+b*x+c=0\n");
 	while(scanf("%lf %lf %lf", a, b, c) != 3)
 		{
-			printf("ÐÐµÐºÐ¾Ñ€Ñ€ÐµÐºÑ‚Ð½Ñ‹Ð¹ Ð²Ð²Ð¾Ð´!\n");
+			printf("Íåêîððåêòíûé ââîä!\n");
 			clearBuffer();
 		}
 	clearBuffer();
 	printf("%lf, %lf, %lf\n", *a, *b, *c);
 }
+
 RootsCount LnSolve(double b, double c, double* x1)
 {	
 	assert(x1 != NULL);
@@ -120,7 +133,7 @@ RootsCount LnSolve(double b, double c, double* x1)
 	assert(!isNan(c));
 	assert(isfinite(b));
 	assert(isfinite(c));
-	printf("\nÐ£Ñ€Ð°Ð²Ð½ÐµÐ½Ð¸Ðµ Ð½Ðµ ÐºÐ²Ð°Ð´Ñ€Ð°Ñ‚Ð½Ð¾Ðµ\n");
+	printf("\nÓðàâíåíèå íå êâàäðàòíîå\n");
 	if ( (fabs(b) < fabs(EPS)) && (fabs(c) < fabs(EPS)) )
 		return (RootsCount) -1;
 	else if (fabs(b) < fabs(EPS))
@@ -147,7 +160,7 @@ RootsCount SqSolve(double a, double b, double c, double* x1, double* x2)
 	assert(x2 != NULL);
 	assert(x1 != x2);	
 	const double sqd = DiscrSquareRoot(a, b, c);
-	printf("\nÐ”Ð¸ÑÐºÑ€Ð¸Ð¼Ð¸Ð½Ð°Ð½Ñ‚ ÑƒÑ€Ð°Ð²Ð½ÐµÐ½Ð¸Ñ Ñ€Ð°Ð²ÐµÐ½ %lf\n",sqd * sqd);
+	printf("\nÄèñêðèìèíàíò óðàâíåíèÿ ðàâåí %lf\n", b * b - 4 * a * c);
 	if (sqd < -EPS)
 	{
 		return (RootsCount) 0;
@@ -180,3 +193,15 @@ void clearBuffer(void)
 		continue;
 	}
 }
+
+/*int StringCount(FILE * fp)
+{	
+	assert(fp != NULL);
+	char TestString[64];
+	int StrCnt = 0;
+	while ((fgets(TestString, 256, fp))!=NULL)
+	{
+		StrCnt+=1;
+	}
+	return StrCnt;
+}*/

@@ -1,4 +1,9 @@
+#include <stdio.h>
+#include "TXLib.h"
+
 void Input(double* a, double* b, double* c);
+
+int StringCount(FILE * fp);
 
 enum RootsCount
 {
@@ -11,7 +16,7 @@ enum RootsCount
 double DiscrSquareRoot(double a, double b, double c);
 
 int TestQuad(double a, double b, double c, double x1ref, 
-			 double x2ref, RootsCount rcountref);
+			 double x2ref, int rcountref);
 
 void PrintingRoots(RootsCount rcount, double x1, double x2);
 
