@@ -10,7 +10,7 @@ int main(void)
 	double Coeffs[nCoeffs]={}; //array meant to contain coefficients a, b an d
 	firstreq();
 	clearBuffer();
-	Input(Coeffs); //filling in the coefficient values received from stdin
+	Input(Coeffs); //assigns the coefficient values received from stdin to Coeffs
 	RootsCount rcount; //variable that contains the information about the number of roots
 	double Roots[nRoots]={}; //array meant to contain roots x1 and x2
 	rcount=TypeEquation(Coeffs, Roots); //deciding whether the equation is linear or quadratic and assigning its number of roots to rcount
