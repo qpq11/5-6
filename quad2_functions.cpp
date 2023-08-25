@@ -1,27 +1,27 @@
+//quad2_functions.cpp- contains all the functions required to solve an equation
 #include <stdio.h>
 #include "TXLib.h"
 #include <math.h>
 #include <string.h>
 #include "quad2_functions.h"
 
-RootsCount TypeEquation(double Coeffs[], 
-			double Roots[])
-{	
-	/*assert(x1 != NULL);
-	assert(x2 != NULL);
-	assert(x1 != x2);
-	assert(!isNan(a));
-	assert(!isNan(b));
-	assert(!isNan(c));*/
-	assert(isfinite(*(Coeffs)f));
-	assert(isfinite(*(Coeffs+1)f));
-	assert(isfinite(*(Coeffs+2)f));
+/*this function checks whether the absolute value of a (referred as Coeffs[0]) is negligibly small;
+if it is, solve equation as linear; else solve as quadratic. returns the number of roots 
+in format of RootsCount*/
+
+RootsCount TypeEquation(double Coeffs[], double Roots[])
+{		
+	assert(isfinite(*(Coeffs)));			
+	assert(isfinite(*(Coeffs+1)));               /*checking whether a, b and c are finite numbers*/
+	assert(isfinite(*(Coeffs+2)));
 	if (fabs(Coeffs[0]) < fabs(EPS))
 	{	
 		return LnSolve(Coeffs, Roots);
 	}
-	return SqSolve(Coeffs, Roots);
+	return QdSolve(Coeffs, Roots);
 }
+
+/*function that clears the input buffer when called*/
 
 void clearBuffer(void)
 {
@@ -31,13 +31,18 @@ void clearBuffer(void)
 	}
 }
 
-void Input(double Coeffs[3]={})
+/*function that assigns entered double-type values to the elements of array Coeffs[] 
+(described in quad2.cpp). if an incorrect input occurs, user has to enter ALL the 
+values again; can be fixed by commenting/deleting line 45*/
+
+void Input(double Coeffs[]={})
 {	
 	printf("Enter coefficients a, b and c of the equation of type a*x^2+b*x+c=0\n");
 	for(int i=0; i<nCoeffs; i++){
 		while (scanf("%lf", &Coeffs[i]) != 1){
 			puts("Incorrect input! Try again\n");
 			clearBuffer();
+			i = 0;
 		}
 	}
 	for(int i=0; i<nCoeffs; i++)
@@ -45,79 +50,53 @@ void Input(double Coeffs[3]={})
 	printf("\n");
 }
 
-/*void firstreq(void)
-{
-	char tests[4]={};
-	puts("Would you like to test the program first?");
-	scanf("%s", tests);
-	if (strcmp(tests, "Yes")==0)
-	{		
-			PassedTests += TestQuad({0.0, 0.0, 0.0}, {0.0, 0.0}, InfiniteRoots);
-			PassedTests += TestQuad({1.0, 0.0, 0.0}, {0.0, 0.0}, OneRoot);
-			PassedTests += TestQuad({1.0, -3.0, 2.0}, {2.0, 1.0}, TwoRoots);
-			PassedTests += TestQuad({0.0, 0.0, 7.8}, {0.0, 0.0}, NoRoots);
-			printf("\nTests passed %d out of 4\n\n", PassedTests);
-	}
-	else if (strcmp(tests, "No")==0)
-	{
-	return;
-	}
-	else
-	{
-		puts("Type in \"Yes\" or \"No\" or else the program will not function(((");
-		firstreq();
-	}
-}*/
+/*function that asks the user whether they want to test a program on values from
+a text file tests.txt; if "yes", it tests the file and tells how many tests 
+were successful; if no, finishes. It will not end until a user types in either "yes"
+or "no", warning them that nothing else is accepted*/
 
 void firstreq(void)
 {
-	char tests[4]={};
-	puts("Не желаете ли сначала провести программу через тесты?");
-	scanf("%s", tests);
-	if (strcmp(tests, "да")==0){		
+	char answer[]= "";
+	puts("Would you like to test the program first?");
+	scanf("%s", answer);
+	if (strcmp(answer, "yes")==0){		
 			int PassedTests = 0;
 			FILE * fp;
 			fp=fopen("tests.txt", "r");
 			int TestsCount = 0;
-			//int StringCount = 0;
-			/*PassedTests += TestQuad(0.0, 0.0, 0.0, 0.0, 0.0, InfiniteRoots);
-			PassedTests += TestQuad(1.0, 0.0, 0.0, 0.0, 0.0, OneRoot);
-			PassedTests += TestQuad(1.0, -3.0, 2.0, 2.0, 1.0, TwoRoots);
-			PassedTests += TestQuad(0.0, 0.0, 7.8, 0.0, 0.0, NoRoots);
-			printf("\nПройдено тестов %d из 4\n\n", PassedTests);*/
 			double CoeffsT [nCoeffs] = {};
 			double RootsT [nRoots] = {};
 			int rcountt = 0;
-			//char TestString[64];
 			while(fscanf(fp, "%lf %lf %lf %lf %lf %d", &CoeffsT[0], &CoeffsT[1], &CoeffsT[2], &RootsT[0], &RootsT[1], &rcountt) != EOF) {
 				PassedTests += TestQuad(CoeffsT, RootsT, rcountt);
 				TestsCount++;
-				printf("\nПройдено тестов %d из %d \n", PassedTests, TestsCount);
+				printf("\nPassed tests: %d out of %d \n", PassedTests, TestsCount);
 				fgetc(fp);
 			}
 			fclose(fp);
 	}
-	else if (strcmp(tests, "нет")==0){
+	else if (strcmp(answer, "no")==0){
 		return;
 	}
 	else
 	{
-			puts("Введите \"да\" или \"нет\", иначе ничего не будет работать(((");
+			puts("Type in \"yes\" or \"no\"  or else nothing's gonna work(((");
 			firstreq();
 	}
 }
 
+/*function that takes an array of coefficients Coeffs[], an array of expected VALUES that Roots[]
+will have if such Coeffs[] are given to Input() function and rcountref, and an expected value of nroots
+in format int. Finds the roots of equation with coefficients of Coeffs; if both roots and their amount 
+are equal to expected values, returns 1 as a sign that the test has passed, otherwise returns 0 to 
+warn user about a failed test*/
+
 int TestQuad(double Coeffs[], double refRoots[], int rcountref)
 {	
-	/*assert(&x1ref != NULL);
-	assert(&x2ref != NULL);
-	assert(&x1ref != &x2ref);*/
-	/*assert(!isNan(a));
-	assert(!isNan(b));
-	assert(!isNan(c));*/
-	assert(isfinite(Coeffs[0]f));
-	assert(isfinite(Coeffs[1]f));
-	assert(isfinite(Coeffs[2]f));
+	assert(isfinite(Coeffs[0]));
+	assert(isfinite(Coeffs[1]));
+	assert(isfinite(Coeffs[2]));
 	double Roots[nRoots]={};
 	int rcount = InfiniteRoots;
 	rcount= (int) TypeEquation(Coeffs, Roots);
@@ -133,11 +112,12 @@ int TestQuad(double Coeffs[], double refRoots[], int rcountref)
 	}
 }
 
+/*function that takes rcount (information about how many roots an equation has) and array with 
+computed equation roots Roots[]. prints information about how many roots an equation has and 
+prints these roots themselves, but only in case there is a finite amount of them*/
+
 void PrintingRoots(RootsCount rcount, double Roots[])
 {	
-	/*assert(&x1 != NULL);
-	assert(&x2 != NULL);
-	assert(&x1 != &x2);*/
 	switch(rcount)
 	{
 		case InfiniteRoots:  
@@ -150,7 +130,7 @@ void PrintingRoots(RootsCount rcount, double Roots[])
 			printf("One root: %lf", *Roots);
 			break;
 		case TwoRoots:
-			printf("Two roots: %lf и %lf", *Roots, *(Roots+1));
+			printf("Two roots: %lf and %lf", *Roots, *(Roots+1));
 			break;
 		default:
 			printf("Something went wrong, try checking the input");
@@ -158,13 +138,13 @@ void PrintingRoots(RootsCount rcount, double Roots[])
 	}
 }
 
+/*function that solves equation as a linear; assigns the root to Roots[0] if there is only one 
+root. returns information about how many roots an equation has in format of RootsCount*/
+
 RootsCount LnSolve(double Coeffs[], double Roots[])
 {	
-	/*assert(x1 != NULL);
-	assert(!isNan(b));
-	assert(!isNan(c));*/
-	assert(isfinite(*(Coeffs+1)f));
-	assert(isfinite(*(Coeffs+2)f));
+	assert(isfinite(*(Coeffs+1)));
+	assert(isfinite(*(Coeffs+2)));
 	printf("\nEquation is not quadratic\n");
 	if ( (fabs(Coeffs[1]) < fabs(EPS)) && (fabs(Coeffs[2]) < fabs(EPS)) )
 		return (RootsCount) -1;
@@ -177,6 +157,9 @@ RootsCount LnSolve(double Coeffs[], double Roots[])
 	}
 }
 
+/*function that calculates discriminant of a quadratic equation. returns its square root if
+discriminant is larger or equals to zero, else returns -1*/
+
 double DiscrSquareRoot(double Coeffs[])
 {
 	double d = Coeffs[1] * Coeffs[1] - 4 * Coeffs[0] * Coeffs[2];
@@ -185,14 +168,14 @@ double DiscrSquareRoot(double Coeffs[])
 	else
 		return -1;
 }
+
+/*function that solves equation as quadratic. prints its discriminant and returns information 
+about how many roots an equation has in format of RootsCount*/
 	
-RootsCount SqSolve(double Coeffs[], double Roots[])
+RootsCount QdSolve(double Coeffs[], double Roots[])
 {	
-	/*assert(x1 != NULL);
-	assert(x2 != NULL);
-	assert(x1 != x2);*/	
 	const double sqd = DiscrSquareRoot(Coeffs);
-	printf("\nThe descriminant of the equation is %lf\n", Coeffs[1] * Coeffs[1] - 4 * Coeffs[0] * Coeffs[2]);
+	printf("\nThe discriminant of the equation is %lf\n", Coeffs[1] * Coeffs[1] - 4 * Coeffs[0] * Coeffs[2]);
 	if (sqd < -EPS)
 	{
 		return (RootsCount) 0;
@@ -209,11 +192,3 @@ RootsCount SqSolve(double Coeffs[], double Roots[])
 		return (RootsCount) 2;
 	}
 }
-
-/*int isNan(double n)
-{
-	if (n == n)
-		return 0;
-	else
-		return 1;
-}*/

@@ -1,3 +1,4 @@
+//quad2.cpp- solves equation of a type ax^2+bx+c=0 taking floating coefficients a, b and c as an input
 #include <stdio.h>
 #include "TXLib.h"
 #include <math.h>
@@ -6,14 +7,13 @@
 
 int main(void)
 {	
-	double Coeffs[nCoeffs]={};
+	double Coeffs[nCoeffs]={}; //array meant to contain coefficients a, b an d
 	firstreq();
 	clearBuffer();
-	Input(Coeffs);
-	RootsCount rcount;
-	double Roots[nRoots]={};
-	rcount=TypeEquation(Coeffs, Roots);
-	PrintingRoots(rcount, Roots);
-	//printf("E");
+	Input(Coeffs); //filling in the coefficient values received from stdin
+	RootsCount rcount; //variable that contains the information about the number of roots
+	double Roots[nRoots]={}; //array meant to contain roots x1 and x2
+	rcount=TypeEquation(Coeffs, Roots); //deciding whether the equation is linear or quadratic and assigning its number of roots to rcount
+	PrintingRoots(rcount, Roots); //print information about roots of the equation
 	return 0;
 }
