@@ -1,0 +1,42 @@
+\doxysection{quad2\+\_\+functions.\+h}
+\hypertarget{quad2__functions_8h_source}{}\label{quad2__functions_8h_source}\index{C:/Users/ivan2/OneDrive/Документы/GitHub/5-\/6/quad2\_functions.h@{C:/Users/ivan2/OneDrive/Документы/GitHub/5-\/6/quad2\_functions.h}}
+\mbox{\hyperlink{quad2__functions_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//quad2\_functions.h-\/\ header\ file\ required\ by\ the\ .cpp\ file\ to\ work\ successfully}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{quad2__functions_8h_ac8e08f0abdcfac61b6b2ce07172dc233}{nCoeffs}}\ =\ 3;}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{quad2__functions_8h_afe01386a82fedc016455a43c20280a97}{EPS}}\ =\ 1e-\/15;}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{quad2__functions_8h_aa25c6d8cdf0bee88e27388ccef3dcdc3}{RootsCount}}}
+\DoxyCodeLine{00021\ \{}
+\DoxyCodeLine{00022\ \ \ \ \ \mbox{\hyperlink{quad2__functions_8h_aa25c6d8cdf0bee88e27388ccef3dcdc3a07eb4f71bf8d3ae21563e14e3303d703}{InfiniteRoots}}\ =\ -\/1,}
+\DoxyCodeLine{00023\ \ \ \ \ \mbox{\hyperlink{quad2__functions_8h_aa25c6d8cdf0bee88e27388ccef3dcdc3a58587f73761d33e01ac6765708c4b9c3}{NoRoots}},}
+\DoxyCodeLine{00024\ \ \ \ \ \mbox{\hyperlink{quad2__functions_8h_aa25c6d8cdf0bee88e27388ccef3dcdc3aa1ac608004f79e9d38254ca018bc108e}{OneRoot}},\ }
+\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{quad2__functions_8h_aa25c6d8cdf0bee88e27388ccef3dcdc3aa1733e118286438f67558a7231221b61}{TwoRoots}}}
+\DoxyCodeLine{00026\ \};}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00031\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{quad2__functions_8h_aa60d4c08efbd426453d92cb182169935}{nRoots}}\ =\ 2;}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{comment}{//all\ the\ functions\ below\ are\ documented\ in\ quad2\_functions.cpp}}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00045\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{quad2__functions_8h_a4805438dc2900e78e52f432ca1028e14}{Input}}(\textcolor{keywordtype}{double}\ Coeffs[]);}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00051\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{quad2__functions_8h_a0db4f88ab018095150ad3c05a6b658b5}{clearBuffer}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00070\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{quad2__functions_8h_acce32b211e9a1c61d49038c6d1220363}{TestQuad}}(\textcolor{keywordtype}{double}\ Coeffs[],\ \textcolor{keywordtype}{double}\ refRoots[],\ \textcolor{keywordtype}{int}\ rcountref);}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00082\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{quad2__functions_8h_a7faea8a96bb7f1f974c3be607c70102a}{PrintingRoots}}(\mbox{\hyperlink{quad2__functions_8h_aa25c6d8cdf0bee88e27388ccef3dcdc3}{RootsCount}}\ rcount,\ \textcolor{keywordtype}{double}\ Roots[]);}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00095\ \mbox{\hyperlink{quad2__functions_8h_aa25c6d8cdf0bee88e27388ccef3dcdc3}{RootsCount}}\ \mbox{\hyperlink{quad2__functions_8h_a906714d67909b3869aaf8cb033130cd7}{TypeEquation}}(\textcolor{keywordtype}{double}\ Coeffs[],\ }
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ Roots[]);}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00112\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{quad2__functions_8h_afcf6142c6f89bfdefa43e3daf5c9c1eb}{firstreq}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00123\ \mbox{\hyperlink{quad2__functions_8h_aa25c6d8cdf0bee88e27388ccef3dcdc3}{RootsCount}}\ \mbox{\hyperlink{quad2__functions_8h_a42e3888c7cf3220340a07a900724359d}{LnSolve}}(\textcolor{keywordtype}{double}\ Coeffs[],\ \textcolor{keywordtype}{double}\ Roots[]);}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00132\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{quad2__functions_8h_a65cd9b2985d7e54365d2525883fb101b}{DiscrSquareRoot}}(\textcolor{keywordtype}{double}\ Coeffs[]);}
+\DoxyCodeLine{00133\ }
+\DoxyCodeLine{00142\ \mbox{\hyperlink{quad2__functions_8h_aa25c6d8cdf0bee88e27388ccef3dcdc3}{RootsCount}}\ \mbox{\hyperlink{quad2__functions_8h_a33f148d6f86822be2d8384bd61517fea}{QdSolve}}(\textcolor{keywordtype}{double}\ Coeffs[],\ \textcolor{keywordtype}{double}\ Roots[]);}
+
+\end{DoxyCode}

@@ -1,6 +1,6 @@
 //quad2_functions.cpp- contains all the functions required to solve an equation
 #include <stdio.h>
-#include "TXLib.h"
+#include <assert.h>
 #include <math.h>
 #include <string.h>
 #include "quad2_functions.h"
@@ -11,6 +11,12 @@ in format of RootsCount*/
 
 RootsCount TypeEquation(double Coeffs[], double Roots[])
 {		
+	assert(!isnan(*(Coeffs)));
+	assert(!isnan(*(Coeffs+1)));
+	assert(!isnan(*(Coeffs+2)));
+	assert(Roots != Roots+1);
+	assert(Roots != NULL);
+	assert(Roots+1 != NULL);
 	assert(isfinite(*(Coeffs)));			
 	assert(isfinite(*(Coeffs+1)));               /*checking whether a, b and c are finite numbers*/
 	assert(isfinite(*(Coeffs+2)));
@@ -37,6 +43,9 @@ values again; can be fixed by commenting/deleting line 45*/
 
 void Input(double Coeffs[]={})
 {	
+	assert(!isnan(*(Coeffs)));
+	assert(!isnan(*(Coeffs+1)));
+	assert(!isnan(*(Coeffs+2)));
 	printf("Enter coefficients a, b and c of the equation of type a*x^2+b*x+c=0\n");
 	for(int i=0; i<nCoeffs; i++){
 		while (scanf("%lf", &Coeffs[i]) != 1){
@@ -71,7 +80,7 @@ void firstreq(void)
 			while(fscanf(fp, "%lf %lf %lf %lf %lf %d", &CoeffsT[0], &CoeffsT[1], &CoeffsT[2], &RootsT[0], &RootsT[1], &rcountt) != EOF) {
 				PassedTests += TestQuad(CoeffsT, RootsT, rcountt);
 				TestsCount++;
-				printf("\nPassed tests: %d out of %d \n", PassedTests, TestsCount);
+				printf("\nPassed tests: %d out of %d \n\n", PassedTests, TestsCount);
 				fgetc(fp);
 			}
 			fclose(fp);
@@ -97,6 +106,12 @@ int TestQuad(double Coeffs[], double refRoots[], int rcountref)
 	assert(isfinite(Coeffs[0]));
 	assert(isfinite(Coeffs[1]));
 	assert(isfinite(Coeffs[2]));
+	assert(!isnan(*(Coeffs)));
+	assert(!isnan(*(Coeffs+1)));
+	assert(!isnan(*(Coeffs+2)));
+	assert(refRoots != refRoots+1);
+	assert(refRoots != NULL);
+	assert(refRoots+1 != NULL);
 	double Roots[nRoots]={};
 	int rcount = InfiniteRoots;
 	rcount= (int) TypeEquation(Coeffs, Roots);
@@ -118,6 +133,9 @@ prints these roots themselves, but only in case there is a finite amount of them
 
 void PrintingRoots(RootsCount rcount, double Roots[])
 {	
+	assert(Roots != Roots+1);
+	assert(Roots != NULL);
+	assert(Roots+1 != NULL);
 	switch(rcount)
 	{
 		case InfiniteRoots:  
@@ -143,6 +161,8 @@ root. returns information about how many roots an equation has in format of Root
 
 RootsCount LnSolve(double Coeffs[], double Roots[])
 {	
+	assert(!isnan(*(Coeffs+1)));
+	assert(!isnan(*(Coeffs+2)));
 	assert(isfinite(*(Coeffs+1)));
 	assert(isfinite(*(Coeffs+2)));
 	printf("\nEquation is not quadratic\n");
@@ -162,6 +182,12 @@ discriminant is larger or equals to zero, else returns -1*/
 
 double DiscrSquareRoot(double Coeffs[])
 {
+	assert(isfinite(Coeffs[0]));
+	assert(isfinite(Coeffs[1]));
+	assert(isfinite(Coeffs[2]));
+	assert(!isnan(*(Coeffs)));
+	assert(!isnan(*(Coeffs+1)));
+	assert(!isnan(*(Coeffs+2)));
 	double d = Coeffs[1] * Coeffs[1] - 4 * Coeffs[0] * Coeffs[2];
 	if (d>=0)
 		return sqrt(d);
@@ -174,6 +200,15 @@ about how many roots an equation has in format of RootsCount*/
 	
 RootsCount QdSolve(double Coeffs[], double Roots[])
 {	
+	assert(!isnan(*(Coeffs)));
+	assert(!isnan(*(Coeffs+1)));
+	assert(!isnan(*(Coeffs+2)));
+	assert(Roots != Roots+1);
+	assert(Roots != NULL);
+	assert(Roots+1 != NULL);
+	assert(isfinite(*(Coeffs)));			
+	assert(isfinite(*(Coeffs+1)));
+	assert(isfinite(*(Coeffs+2)));
 	const double sqd = DiscrSquareRoot(Coeffs);
 	printf("\nThe discriminant of the equation is %lf\n", Coeffs[1] * Coeffs[1] - 4 * Coeffs[0] * Coeffs[2]);
 	if (sqd < -EPS)
@@ -192,3 +227,4 @@ RootsCount QdSolve(double Coeffs[], double Roots[])
 		return (RootsCount) 2;
 	}
 }
+

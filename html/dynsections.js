@@ -120,6 +120,7 @@ function toggleInherit(id)
     $(img).attr('src',src.substring(0,src.length-10)+'open.png');
   }
 }
+<<<<<<< Updated upstream
 
 var opened=true;
 // in case HTML_COLORSTYLE is LIGHT or DARK the vars will be replaced, so we write them out explicitly and use double quotes
@@ -189,4 +190,6 @@ function init_codefold(relPath) {
   });
 }
 
+=======
+>>>>>>> Stashed changes
 /* @license-end */

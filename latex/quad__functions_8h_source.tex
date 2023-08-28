@@ -1,0 +1,43 @@
+\doxysection{quad\+\_\+functions.\+h}
+\hypertarget{quad__functions_8h_source}{}\label{quad__functions_8h_source}\index{C:/Users/ivan2/OneDrive/Документы/GitHub/5-\/6/quad\_functions.h@{C:/Users/ivan2/OneDrive/Документы/GitHub/5-\/6/quad\_functions.h}}
+\mbox{\hyperlink{quad__functions_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ "{}TXLib.h"{}}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{quad__functions_8h_aaa02be2a2f2b2e570d593c465dad1e75}{Input}}(\textcolor{keywordtype}{double}*\ a,\ \textcolor{keywordtype}{double}*\ b,\ \textcolor{keywordtype}{double}*\ c);}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{quad__functions_8h_aa8d0e7e1fb1bf058fc1bf0b98872d03f}{StringCount}}(FILE\ *\ fp);}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{quad2__functions_8h_aa25c6d8cdf0bee88e27388ccef3dcdc3}{RootsCount}}}
+\DoxyCodeLine{00009\ \{}
+\DoxyCodeLine{00010\ \ \ \ \ \mbox{\hyperlink{quad__functions_8h_aa25c6d8cdf0bee88e27388ccef3dcdc3a07eb4f71bf8d3ae21563e14e3303d703}{InfiniteRoots}}\ =\ -\/1,}
+\DoxyCodeLine{00011\ \ \ \ \ \mbox{\hyperlink{quad__functions_8h_aa25c6d8cdf0bee88e27388ccef3dcdc3a58587f73761d33e01ac6765708c4b9c3}{NoRoots}},}
+\DoxyCodeLine{00012\ \ \ \ \ \mbox{\hyperlink{quad__functions_8h_aa25c6d8cdf0bee88e27388ccef3dcdc3aa1ac608004f79e9d38254ca018bc108e}{OneRoot}},\ }
+\DoxyCodeLine{00013\ \ \ \ \ \mbox{\hyperlink{quad__functions_8h_aa25c6d8cdf0bee88e27388ccef3dcdc3aa1733e118286438f67558a7231221b61}{TwoRoots}}}
+\DoxyCodeLine{00014\ \};}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{quad__functions_8h_a2c53762ac7eedb692a497f2be6ed4b00}{DiscrSquareRoot}}(\textcolor{keywordtype}{double}\ a,\ \textcolor{keywordtype}{double}\ b,\ \textcolor{keywordtype}{double}\ c);}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{quad__functions_8h_a919b26d882ab8275476c3a8b5400639d}{TestQuad}}(\textcolor{keywordtype}{double}\ a,\ \textcolor{keywordtype}{double}\ b,\ \textcolor{keywordtype}{double}\ c,\ \textcolor{keywordtype}{double}\ x1ref,\ }
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ x2ref,\ \textcolor{keywordtype}{int}\ rcountref);}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{quad__functions_8h_aa71177fd344cf889a82009e4ddbba922}{PrintingRoots}}(\mbox{\hyperlink{quad2__functions_8h_aa25c6d8cdf0bee88e27388ccef3dcdc3}{RootsCount}}\ rcount,\ \textcolor{keywordtype}{double}\ x1,\ \textcolor{keywordtype}{double}\ x2);}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{quad__functions_8h_afcf6142c6f89bfdefa43e3daf5c9c1eb}{firstreq}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{quad__functions_8h_afe01386a82fedc016455a43c20280a97}{EPS}}\ =\ 1e-\/15;}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \mbox{\hyperlink{quad2__functions_8h_aa25c6d8cdf0bee88e27388ccef3dcdc3}{RootsCount}}\ \mbox{\hyperlink{quad__functions_8h_a37c0c2c32c5e28ccb3707c566d0a3497}{SqSolve}}(\textcolor{keywordtype}{double}\ a,\ \textcolor{keywordtype}{double}\ b,\ \textcolor{keywordtype}{double}\ c,\ }
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}*\ x1,\ \textcolor{keywordtype}{double}*\ x2);}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00030\ \mbox{\hyperlink{quad2__functions_8h_aa25c6d8cdf0bee88e27388ccef3dcdc3}{RootsCount}}\ \mbox{\hyperlink{quad__functions_8h_ad7fa0c142e5abca2886e7676dd948b3e}{TypeEquation}}(\textcolor{keywordtype}{double}\ a,\ \textcolor{keywordtype}{double}\ b,\ \textcolor{keywordtype}{double}\ c,\ }
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}*\ x1,\ \textcolor{keywordtype}{double}*\ x2);}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00033\ \mbox{\hyperlink{quad2__functions_8h_aa25c6d8cdf0bee88e27388ccef3dcdc3}{RootsCount}}\ \mbox{\hyperlink{quad__functions_8h_a09705cfa7337bdff204f45bf65f87ad4}{LnSolve}}(\textcolor{keywordtype}{double}\ b,\ \textcolor{keywordtype}{double}\ c,\ \textcolor{keywordtype}{double}*\ x1);}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00035\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{quad__functions_8h_a4b19797bce3c51b37f334b389152ccb3}{isNan}}(\textcolor{keywordtype}{double}\ n);}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{quad__functions_8h_a0db4f88ab018095150ad3c05a6b658b5}{clearBuffer}}(\textcolor{keywordtype}{void});}
+
+\end{DoxyCode}

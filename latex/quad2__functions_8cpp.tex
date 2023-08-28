@@ -1,0 +1,206 @@
+\doxysection{C\+:/\+Users/ivan2/\+One\+Drive/Документы/\+Git\+Hub/5-\/6/quad2\+\_\+functions.cpp File Reference}
+\hypertarget{quad2__functions_8cpp}{}\label{quad2__functions_8cpp}\index{C:/Users/ivan2/OneDrive/Документы/GitHub/5-\/6/quad2\_functions.cpp@{C:/Users/ivan2/OneDrive/Документы/GitHub/5-\/6/quad2\_functions.cpp}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$assert.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include \"{}quad2\+\_\+functions.\+h\"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{quad2__functions_8h_aa25c6d8cdf0bee88e27388ccef3dcdc3}{Roots\+Count}} \mbox{\hyperlink{quad2__functions_8cpp_a906714d67909b3869aaf8cb033130cd7}{Type\+Equation}} (double Coeffs\mbox{[}$\,$\mbox{]}, double Roots\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em A function that defines the type of equation. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{quad2__functions_8cpp_a0db4f88ab018095150ad3c05a6b658b5}{clear\+Buffer}} (void)
+\begin{DoxyCompactList}\small\item\em A function that clears the input buffer when called. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{quad2__functions_8cpp_a458daf7ba55d6ff525c2f51f869b97fb}{Input}} (double Coeffs\mbox{[}$\,$\mbox{]}=\{\})
+\begin{DoxyCompactList}\small\item\em This is a coefficient input function. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{quad2__functions_8cpp_afcf6142c6f89bfdefa43e3daf5c9c1eb}{firstreq}} (void)
+\begin{DoxyCompactList}\small\item\em A function that performs first console request. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{quad2__functions_8cpp_acce32b211e9a1c61d49038c6d1220363}{Test\+Quad}} (double Coeffs\mbox{[}$\,$\mbox{]}, double ref\+Roots\mbox{[}$\,$\mbox{]}, int rcountref)
+\begin{DoxyCompactList}\small\item\em Function made to test a program on premade values. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{quad2__functions_8cpp_a7faea8a96bb7f1f974c3be607c70102a}{Printing\+Roots}} (\mbox{\hyperlink{quad2__functions_8h_aa25c6d8cdf0bee88e27388ccef3dcdc3}{Roots\+Count}} rcount, double Roots\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Function that prints number of roots basing on the value of rcount. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{quad2__functions_8h_aa25c6d8cdf0bee88e27388ccef3dcdc3}{Roots\+Count}} \mbox{\hyperlink{quad2__functions_8cpp_a42e3888c7cf3220340a07a900724359d}{Ln\+Solve}} (double Coeffs\mbox{[}$\,$\mbox{]}, double Roots\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Solves a linear equation. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{quad2__functions_8cpp_a65cd9b2985d7e54365d2525883fb101b}{Discr\+Square\+Root}} (double Coeffs\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Discriminant solver. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{quad2__functions_8h_aa25c6d8cdf0bee88e27388ccef3dcdc3}{Roots\+Count}} \mbox{\hyperlink{quad2__functions_8cpp_a33f148d6f86822be2d8384bd61517fea}{Qd\+Solve}} (double Coeffs\mbox{[}$\,$\mbox{]}, double Roots\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Solves a quadratic equation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{quad2__functions_8cpp_a0db4f88ab018095150ad3c05a6b658b5}\label{quad2__functions_8cpp_a0db4f88ab018095150ad3c05a6b658b5} 
+\index{quad2\_functions.cpp@{quad2\_functions.cpp}!clearBuffer@{clearBuffer}}
+\index{clearBuffer@{clearBuffer}!quad2\_functions.cpp@{quad2\_functions.cpp}}
+\doxysubsubsection{\texorpdfstring{clearBuffer()}{clearBuffer()}}
+{\footnotesize\ttfamily void clear\+Buffer (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+A function that clears the input buffer when called. 
+
+\Hypertarget{quad2__functions_8cpp_a65cd9b2985d7e54365d2525883fb101b}\label{quad2__functions_8cpp_a65cd9b2985d7e54365d2525883fb101b} 
+\index{quad2\_functions.cpp@{quad2\_functions.cpp}!DiscrSquareRoot@{DiscrSquareRoot}}
+\index{DiscrSquareRoot@{DiscrSquareRoot}!quad2\_functions.cpp@{quad2\_functions.cpp}}
+\doxysubsubsection{\texorpdfstring{DiscrSquareRoot()}{DiscrSquareRoot()}}
+{\footnotesize\ttfamily double Discr\+Square\+Root (\begin{DoxyParamCaption}\item[{double}]{Coeffs\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Discriminant solver. 
+
+A function that calculates a discriminant of a quadratic equation 
+\begin{DoxyParams}{Parameters}
+{\em Coeffs\mbox{[}$\,$\mbox{]}} & an array of equation\textquotesingle{}s coefficients \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Square root of a discriminant if it is larger or equals to zero; else returns -\/1 
+\end{DoxyReturn}
+\Hypertarget{quad2__functions_8cpp_afcf6142c6f89bfdefa43e3daf5c9c1eb}\label{quad2__functions_8cpp_afcf6142c6f89bfdefa43e3daf5c9c1eb} 
+\index{quad2\_functions.cpp@{quad2\_functions.cpp}!firstreq@{firstreq}}
+\index{firstreq@{firstreq}!quad2\_functions.cpp@{quad2\_functions.cpp}}
+\doxysubsubsection{\texorpdfstring{firstreq()}{firstreq()}}
+{\footnotesize\ttfamily void firstreq (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+A function that performs first console request. 
+
+This function asks the user whether they want to test a program on values from a text file tests.\+txt
+
+
+\begin{DoxyParams}{Parameters}
+{\em Function} & takes no parameters but assigns user\textquotesingle{}s answer to \"{}string\"{} variable answer.\+If \"{}yes\"{}, it tests data from the file and tells how many tests were successful; if no, the function just finishes.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyWarning}{Warning}
+Function will not end until a user types in either \"{}yes\"{} or \"{}no\"{}, leaving them stuck on that step 
+\end{DoxyWarning}
+\Hypertarget{quad2__functions_8cpp_a458daf7ba55d6ff525c2f51f869b97fb}\label{quad2__functions_8cpp_a458daf7ba55d6ff525c2f51f869b97fb} 
+\index{quad2\_functions.cpp@{quad2\_functions.cpp}!Input@{Input}}
+\index{Input@{Input}!quad2\_functions.cpp@{quad2\_functions.cpp}}
+\doxysubsubsection{\texorpdfstring{Input()}{Input()}}
+{\footnotesize\ttfamily void Input (\begin{DoxyParamCaption}\item[{double}]{Coeffs\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+This is a coefficient input function. 
+
+A function that assigns entered double-\/type values to the elements of array Coeffs\mbox{[}\mbox{]}
+
+\begin{DoxyNote}{Note}
+If an incorrect input occurs, user has to enter ALL the values again; can be fixed by commenting/deleting line 45 in \doxylink{quad2__functions_8cpp}{quad2\+\_\+functions.\+cpp}
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em Coeffs\mbox{[}$\,$\mbox{]}} & an array containing coefficients a, b and c of quadratic equation \\
+\hline
+\end{DoxyParams}
+\Hypertarget{quad2__functions_8cpp_a42e3888c7cf3220340a07a900724359d}\label{quad2__functions_8cpp_a42e3888c7cf3220340a07a900724359d} 
+\index{quad2\_functions.cpp@{quad2\_functions.cpp}!LnSolve@{LnSolve}}
+\index{LnSolve@{LnSolve}!quad2\_functions.cpp@{quad2\_functions.cpp}}
+\doxysubsubsection{\texorpdfstring{LnSolve()}{LnSolve()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{quad2__functions_8h_aa25c6d8cdf0bee88e27388ccef3dcdc3}{Roots\+Count}} Ln\+Solve (\begin{DoxyParamCaption}\item[{double}]{Coeffs\mbox{[}$\,$\mbox{]},  }\item[{double}]{Roots\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Solves a linear equation. 
+
+A function that solves equation as linear 
+\begin{DoxyParams}{Parameters}
+{\em Coeffs\mbox{[}$\,$\mbox{]}} & an array of equation\textquotesingle{}s coefficients \\
+\hline
+{\em Roots\mbox{[}$\,$\mbox{]}} & an array that\textquotesingle{}s meant to contain equation\textquotesingle{}s roots\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Information about how many roots an equation has in format of Roots\+Count 
+\end{DoxyReturn}
+\Hypertarget{quad2__functions_8cpp_a7faea8a96bb7f1f974c3be607c70102a}\label{quad2__functions_8cpp_a7faea8a96bb7f1f974c3be607c70102a} 
+\index{quad2\_functions.cpp@{quad2\_functions.cpp}!PrintingRoots@{PrintingRoots}}
+\index{PrintingRoots@{PrintingRoots}!quad2\_functions.cpp@{quad2\_functions.cpp}}
+\doxysubsubsection{\texorpdfstring{PrintingRoots()}{PrintingRoots()}}
+{\footnotesize\ttfamily void Printing\+Roots (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{quad2__functions_8h_aa25c6d8cdf0bee88e27388ccef3dcdc3}{Roots\+Count}}}]{rcount,  }\item[{double}]{Roots\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Function that prints number of roots basing on the value of rcount. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rcount} & information about how many roots an equation has \\
+\hline
+{\em Roots\mbox{[}$\,$\mbox{]}} & array that contains equation\textquotesingle{}s root(-\/s)\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+value of variable x1 if equation has one solution; values of variables x1 and x2 if equation has two solutions; only prints information about the number of roots in other cases 
+\end{DoxyReturn}
+\Hypertarget{quad2__functions_8cpp_a33f148d6f86822be2d8384bd61517fea}\label{quad2__functions_8cpp_a33f148d6f86822be2d8384bd61517fea} 
+\index{quad2\_functions.cpp@{quad2\_functions.cpp}!QdSolve@{QdSolve}}
+\index{QdSolve@{QdSolve}!quad2\_functions.cpp@{quad2\_functions.cpp}}
+\doxysubsubsection{\texorpdfstring{QdSolve()}{QdSolve()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{quad2__functions_8h_aa25c6d8cdf0bee88e27388ccef3dcdc3}{Roots\+Count}} Qd\+Solve (\begin{DoxyParamCaption}\item[{double}]{Coeffs\mbox{[}$\,$\mbox{]},  }\item[{double}]{Roots\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Solves a quadratic equation. 
+
+A function that solves equation as quadratic 
+\begin{DoxyParams}{Parameters}
+{\em Coeffs\mbox{[}$\,$\mbox{]}} & an array of equation\textquotesingle{}s coefficients \\
+\hline
+{\em Roots\mbox{[}$\,$\mbox{]}} & an array that\textquotesingle{}s meant to contain equation\textquotesingle{}s roots \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Information about how many roots an equation has in format of Roots\+Count; also prints discriminant\textquotesingle{}s value 
+\end{DoxyReturn}
+\Hypertarget{quad2__functions_8cpp_acce32b211e9a1c61d49038c6d1220363}\label{quad2__functions_8cpp_acce32b211e9a1c61d49038c6d1220363} 
+\index{quad2\_functions.cpp@{quad2\_functions.cpp}!TestQuad@{TestQuad}}
+\index{TestQuad@{TestQuad}!quad2\_functions.cpp@{quad2\_functions.cpp}}
+\doxysubsubsection{\texorpdfstring{TestQuad()}{TestQuad()}}
+{\footnotesize\ttfamily int Test\+Quad (\begin{DoxyParamCaption}\item[{double}]{Coeffs\mbox{[}$\,$\mbox{]},  }\item[{double}]{ref\+Roots\mbox{[}$\,$\mbox{]},  }\item[{int}]{rcountref }\end{DoxyParamCaption})}
+
+
+
+Function made to test a program on premade values. 
+
+A function that compares given roots and their number with values calculated using the coefficients a,b and c
+
+
+\begin{DoxyParams}{Parameters}
+{\em Coeffs\mbox{[}$\,$\mbox{]}} & an array of coefficients\\
+\hline
+{\em ref\+Roots\mbox{[}$\,$\mbox{]}} & an array of expected VALUES that Roots\mbox{[}\mbox{]} will have if such Coeffs\mbox{[}\mbox{]} are given to \doxylink{quad2__functions_8h_a4805438dc2900e78e52f432ca1028e14}{Input()} function\\
+\hline
+{\em rcountref} & expected amount of roots (in format \"{}\+Roots\+Count\"{})\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+if both roots and their amount are equal to expected values, returns 1 as a sign that the test has passed; otherwise returns 0 to warn user about a failed test 
+\end{DoxyReturn}
+\Hypertarget{quad2__functions_8cpp_a906714d67909b3869aaf8cb033130cd7}\label{quad2__functions_8cpp_a906714d67909b3869aaf8cb033130cd7} 
+\index{quad2\_functions.cpp@{quad2\_functions.cpp}!TypeEquation@{TypeEquation}}
+\index{TypeEquation@{TypeEquation}!quad2\_functions.cpp@{quad2\_functions.cpp}}
+\doxysubsubsection{\texorpdfstring{TypeEquation()}{TypeEquation()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{quad2__functions_8h_aa25c6d8cdf0bee88e27388ccef3dcdc3}{Roots\+Count}} Type\+Equation (\begin{DoxyParamCaption}\item[{double}]{Coeffs\mbox{[}$\,$\mbox{]},  }\item[{double}]{Roots\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+A function that defines the type of equation. 
+
+This function checks whether the absolute value of coefficient a (referred as Coeffs\mbox{[}0\mbox{]}) is negligibly small; if it is, solves equation as linear, else solves as quadratic 
+\begin{DoxyParams}{Parameters}
+{\em Coeffs\mbox{[}$\,$\mbox{]}} & an array of equation\textquotesingle{}s coefficients \\
+\hline
+{\em Roots\mbox{[}$\,$\mbox{]}} & an array that\textquotesingle{}s meant to contain equation\textquotesingle{}s roots\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the number of roots in format of Roots\+Count 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+calls Qd\+Solve if an equation is quadratic; else calls Ln\+Solve. In both cases, Roots\mbox{[}\mbox{]} is being changed 
+\end{DoxyNote}

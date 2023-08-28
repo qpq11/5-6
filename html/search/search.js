@@ -195,7 +195,10 @@ function SearchBox(name, resultsPath, extension)
     }
     else if (e.keyCode==27) // Escape out of the search field
     {
+<<<<<<< Updated upstream
       e.stopPropagation();
+=======
+>>>>>>> Stashed changes
       this.DOMSearchField().blur();
       this.DOMPopupSearchResultsWindow().style.display = 'none';
       this.DOMSearchClose().style.display = 'none';
@@ -290,7 +293,10 @@ function SearchBox(name, resultsPath, extension)
     }
     else if (e.keyCode==13 || e.keyCode==27)
     {
+<<<<<<< Updated upstream
       e.stopPropagation();
+=======
+>>>>>>> Stashed changes
       this.OnSelectItem(this.searchIndex);
       this.CloseSelectionWindow();
       this.DOMSearchField().focus();
@@ -672,7 +678,10 @@ function SearchResults(name)
       }
       else if (this.lastKey==27) // Escape
       {
+<<<<<<< Updated upstream
         e.stopPropagation();
+=======
+>>>>>>> Stashed changes
         searchBox.CloseResultsWindow();
         document.getElementById("MSearchField").focus();
       }
@@ -716,7 +725,10 @@ function SearchResults(name)
       }
       else if (this.lastKey==27) // Escape
       {
+<<<<<<< Updated upstream
         e.stopPropagation();
+=======
+>>>>>>> Stashed changes
         searchBox.CloseResultsWindow();
         document.getElementById("MSearchField").focus();
       }
@@ -810,7 +822,10 @@ function createResults(resultsPath)
 function init_search()
 {
   var results = document.getElementById("MSearchSelectWindow");
+<<<<<<< Updated upstream
   results.tabIndex=0;
+=======
+>>>>>>> Stashed changes
   for (var key in indexSectionLabels)
   {
     var link = document.createElement('a');
@@ -821,6 +836,7 @@ function init_search()
     results.appendChild(link);
   }
   searchBox.OnSelectItem(0);
+<<<<<<< Updated upstream
 
   var input = document.getElementById("MSearchSelect");
   var searchSelectWindow = document.getElementById("MSearchSelectWindow");
@@ -836,5 +852,7 @@ function init_search()
       }
     }
   });
+=======
+>>>>>>> Stashed changes
 }
 /* @license-end */

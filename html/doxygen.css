@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 /* The standard CSS for doxygen 1.9.8*/
+=======
+/* The standard CSS for doxygen 1.9.7*/
+>>>>>>> Stashed changes
 
 html {
 /* page base colors */
@@ -152,11 +156,14 @@ html {
 --tooltip-declaration-color: #006318;
 --tooltip-link-color: #4665A2;
 --tooltip-shadow: 1px 1px 7px gray;
+<<<<<<< Updated upstream
 --fold-line-color: #808080;
 --fold-minus-image: url('minus.svg');
 --fold-plus-image: url('plus.svg');
 --fold-minus-image-relpath: url('../../minus.svg');
 --fold-plus-image-relpath: url('../../plus.svg');
+=======
+>>>>>>> Stashed changes
 
 /** font-family */
 --font-family-normal: Roboto,sans-serif;
@@ -303,8 +310,13 @@ html {
 --code-char-literal-color: #00E0F0;
 --code-xml-cdata-color: #C9D1D9;
 --code-vhdl-digit-color: #FF00FF;
+<<<<<<< Updated upstream
 --code-vhdl-char-color: #C0C0C0;
 --code-vhdl-keyword-color: #CF53C9;
+=======
+--code-vhdl-char-color: #000000;
+--code-vhdl-keyword-color: #700070;
+>>>>>>> Stashed changes
 --code-vhdl-logic-color: #FF0000;
 --code-link-color: #79C0FF;
 --code-external-link-color: #79C0FF;
@@ -325,11 +337,14 @@ html {
 --tooltip-declaration-color: #20C348;
 --tooltip-link-color: #79C0FF;
 --tooltip-shadow: none;
+<<<<<<< Updated upstream
 --fold-line-color: #808080;
 --fold-minus-image: url('minusd.svg');
 --fold-plus-image: url('plusd.svg');
 --fold-minus-image-relpath: url('../../minusd.svg');
 --fold-plus-image-relpath: url('../../plusd.svg');
+=======
+>>>>>>> Stashed changes
 
 /** font-family */
 --font-family-normal: Roboto,sans-serif;
@@ -491,12 +506,15 @@ div.qindex{
 	color: var(--index-separator-color);
 }
 
+<<<<<<< Updated upstream
 #main-menu a:focus {
 	outline: auto;
 	z-index: 10;
 	position: relative;
 }
 
+=======
+>>>>>>> Stashed changes
 dt.alphachar{
 	font-size: 180%;
 	font-weight: bold;
@@ -695,6 +713,7 @@ div.line.glow {
 	box-shadow: 0 0 10px var(--glow-color);
 }
 
+<<<<<<< Updated upstream
 span.fold {
         margin-left: 5px;
         margin-right: 1px;
@@ -707,6 +726,8 @@ span.fold {
 	background-repeat:no-repeat;
         background-position:center;
 }
+=======
+>>>>>>> Stashed changes
 
 span.lineno {
 	padding-right: 4px;
