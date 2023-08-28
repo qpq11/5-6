@@ -133,18 +133,10 @@ double DiscrSquareRoot(double Coeffs[]);
 
 /**
 *  @brief Solves a quadratic equation
-<<<<<<< Updated upstream
-*
-=======
->>>>>>> Stashed changes
 *  @details A function that solves equation as quadratic 
 *  @param Coeffs[] an array of equation's coefficients
 *  @param Roots[] an array that's meant to contain equation's roots
 *  @returns Information about how many roots an equation has in format of RootsCount;
 *  also prints discriminant's value
 */
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
 RootsCount QdSolve(double Coeffs[], double Roots[]);
