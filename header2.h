@@ -3,7 +3,7 @@
 /**
 *  @brief A maximum number of coefficients that quadratic equation may have
 */
-const int nCoeffs = 3;
+const int NCOEFFS = 3;
 
 /**
 *  @brief A permissible miscalculation when computing values of "double" type
@@ -19,45 +19,45 @@ const double EPS = 1e-15;
 
 enum RootsCount
 {
-	InfiniteRoots = -1,
-	NoRoots,
+	Infiniteroots = -1,
+	Noroots,
 	OneRoot, 
-	TwoRoots
+	Tworoots
 };
 
 /**
 *  @brief Maximum number of roots that quadratic equation may have
 */
-const int nRoots = 2;
+const int NROOTS = 2;
 
 //all the functions below are documented in quad2_functions.cpp
 
 /**
 *  @brief This is a coefficient input function
 *
-*  @details A function that assigns entered double-type values to the elements of array Coeffs[]
+*  @details A function that assigns entered double-type values to the elements of array coeffs[]
 *
 *  @note If an incorrect input occurs, user has to enter ALL the values again; 
 *  can be fixed by commenting/deleting line 45 in quad2_functions.cpp
 *
-*  @param Coeffs[] an array containing coefficients a, b and c of quadratic equation
+*  @param coeffs[] an array containing coefficients a, b and c of quadratic equation
 */
-void Input(double Coeffs[]);
+void Input(double coeffs[]);
 
 /**
 *  @brief A function that clears the input buffer when called
 */
 
-void clearBuffer(void);
+void ClearBuffer(void);
 
 /**
 * @brief Function made to test a program on premade values
 *
 * @details A function that compares given roots and their number with values calculated using the coefficients a,b and c 
 *
-* @param Coeffs[] an array of coefficients 
+* @param coeffs[] an array of coefficients 
 *
-* @param refRoots[] an array of expected VALUES that Roots[] will have if such Coeffs[] are given to Input() function 
+* @param refroots[] an array of expected VALUES that roots[] will have if such coeffs[] are given to Input() function 
 *
 * @param rcountref expected amount of roots (in format "RootsCount") 
 *
@@ -67,33 +67,36 @@ void clearBuffer(void);
 *
 */
 
-int TestQuad(double Coeffs[], double refRoots[], int rcountref);
+int TestQuad(const double coeffs[], const double refroots[], int rcountref);
 
 /**
 *  @brief Function that prints number of roots basing on the value of rcount
 *
 *  @param rcount information about how many roots an equation has
-*  @param Roots[] array that contains equation's root(-s)
+*  @param roots[] array that contains equation's root(-s)
 *
 *  @returns value of variable x1 if equation has one solution; values of variables x1 and x2
 *  if equation has two solutions; only prints information about the number of roots in other cases
 */
 
-void PrintingRoots(RootsCount rcount, double Roots[]);
+void PrintingRoots(RootsCount rcount, const double roots[]);
 
 /**
 *  @brief A function that defines the type of equation
-*  @details This function checks whether the absolute value of coefficient a (referred as Coeffs[0]) is negligibly small;
+*
+*  @details This function checks whether the absolute value of coefficient a (referred as coeffs[0]) is negligibly small;
 *  if it is, solves equation as linear, else solves as quadratic
-*  @param Coeffs[] an array of equation's coefficients
-*  @param Roots[] an array that's meant to contain equation's roots
+*
+*  @param coeffs[] an array of equation's coefficients
+*  @param roots[] an array that's meant to contain equation's roots
 *
 *  @returns the number of roots in format of RootsCount
-*  @note calls QdSolve if an equation is quadratic; else calls LnSolve. In both cases, Roots[] is being changed
+*
+*  @note calls QdSolve if an equation is quadratic; else calls LnSolve. In both cases, roots[] is being changed
 */
 
-RootsCount TypeEquation(double Coeffs[], 
-			double Roots[]);
+RootsCount EqSolver(const double coeffs[], 
+			double roots[]);
 
 /**
 *  @brief A function that performs first console request
@@ -104,39 +107,62 @@ RootsCount TypeEquation(double Coeffs[],
 *  @param Function takes no parameters but assigns user's answer to "string" 
 *  variable answer.If "yes", it tests data from the file and tells how many tests 
 *  were successful; if no, the function just finishes. 
-
-*  @warning Function will not end until a user types in either "yes"
+*
+*  @note Function will not end until a user types in either "yes"
 *  or "no", leaving them stuck on that step
 */
 
-void firstreq(void);
+void LaunchTests(int argc, char str[]);
 
 /**
 *   @brief Solves a linear equation
+*
 *   @details A function that solves equation as linear
-*   @param Coeffs[] an array of equation's coefficients
-*   @param Roots[] an array that's meant to contain equation's roots
+*
+*   @param coeffs[] an array of equation's coefficients
+*   @param roots[] an array that's meant to contain equation's roots
 *
 *   @returns Information about how many roots an equation has in format of RootsCount
 */
 
-RootsCount LnSolve(double Coeffs[], double Roots[]);
+RootsCount LnSolve(const double coeffs[], double roots[]);
 
 /**
 *  @brief Discriminant solver
+*
 *  @details A function that calculates a discriminant of a quadratic equation 
-*  @param Coeffs[] an array of equation's coefficients
+*
+*  @param coeffs[] an array of equation's coefficients
+*
 *  @returns Square root of a discriminant if it is larger or equals to zero; else returns -1
 */
 
-double DiscrSquareRoot(double Coeffs[]);
+double DiscrSquareRoot(const double coeffs[]);
 
 /**
 *  @brief Solves a quadratic equation
+*
 *  @details A function that solves equation as quadratic 
-*  @param Coeffs[] an array of equation's coefficients
-*  @param Roots[] an array that's meant to contain equation's roots
+*
+*  @param coeffs[] an array of equation's coefficients
+*  @param roots[] an array that's meant to contain equation's roots
+*
 *  @returns Information about how many roots an equation has in format of RootsCount;
 *  also prints discriminant's value
 */
-RootsCount QdSolve(double Coeffs[], double Roots[]);
+RootsCount QdSolve(const double coeffs[], double roots[]);
+
+/**
+*  @brief Compares two "double" numbers
+*  
+*  @details Checks whether difference between n1 and n2 is negligibly small
+*
+*  @param n1 "double" format decimal
+*
+*  @param n2 "double" format decimal
+*  
+*  @returns returns 1 if difference between two decimals is less than EPS; else returns 0
+*/
+int IsEqual(double n1, double n2);
+
+void ArgvCount(int argc, const char** argv);
