@@ -9,27 +9,24 @@
 int main(int argc, const char **argv)
 {	
 	
-	printf("%d\n", argc);
-
-	puts("You entered:");
-
-	for (int i = 0; i < argc; i++) printf("%s\n", argv[i]);
-
-	double coeffs[NCOEFFS] = {}; //array meant to contain coefficients a, b an d
+	double coeffs[NCOEFFS] = {}; 
 	
+#ifdef TEST	
+
 	ArgvCount(argc, argv);
 	
-	ClearBuffer();
+#endif
 	
-	Input(coeffs); //assigns the coefficient values received from stdin to coeffs
 	
-	RootsCount rcount; //variable that contains the information about the number of roots
+	Input(coeffs);
 	
-	double roots[NROOTS] = {}; //array meant to contain roots x1 and x2
+	RootsCount rcount; 
 	
-	rcount = EqSolver(coeffs, roots); //deciding whether the equation is linear or quadratic and assigning its number of roots to rcount
+	double roots[NROOTS] = {}; 
 	
-	PrintingRoots(rcount, roots); //print information about roots of the equation
+	rcount = EqSolver(coeffs, roots); 
+	
+	PrintingRoots(rcount, roots); 
 	
 	return 0;
 }

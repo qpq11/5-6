@@ -1,4 +1,5 @@
 //quad2_functions.h- header file required by the .cpp file to work successfully
+#include <windows.h>
 
 /**
 *  @brief A maximum number of coefficients that quadratic equation may have
@@ -8,7 +9,7 @@ const int NCOEFFS = 3;
 /**
 *  @brief A permissible miscalculation when computing values of "double" type
 */
-const double EPS = 1e-15;
+const double EPS = 1e-5;
 
 /**
  * @brief Enumeration of the numbers of roots an equation may have
@@ -25,12 +26,19 @@ enum RootsCount
 	Tworoots
 };
 
+enum Colour
+{
+	ClrCyan = FOREGROUND_BLUE | FOREGROUND_GREEN | FOREGROUND_INTENSITY,
+	ClrGreen = FOREGROUND_GREEN,
+	ClrDefault = FOREGROUND_BLUE | FOREGROUND_GREEN | FOREGROUND_RED,
+};
+
+void SetColor(Colour colourname);
+
 /**
 *  @brief Maximum number of roots that quadratic equation may have
 */
 const int NROOTS = 2;
-
-//all the functions below are documented in quad2_functions.cpp
 
 /**
 *  @brief This is a coefficient input function
@@ -104,9 +112,9 @@ RootsCount EqSolver(const double coeffs[],
 *  @details This function asks the user whether they want to test a 
 *  program on  values from a text file tests.txt
 *  
-*  @param Function takes no parameters but assigns user's answer to "string" 
-*  variable answer.If "yes", it tests data from the file and tells how many tests 
-*  were successful; if no, the function just finishes. 
+*  @param argc number of arguments received by cmd
+*
+*  @param str[] name/location of .txt file containing tests
 *
 *  @note Function will not end until a user types in either "yes"
 *  or "no", leaving them stuck on that step
@@ -164,5 +172,17 @@ RootsCount QdSolve(const double coeffs[], double roots[]);
 *  @returns returns 1 if difference between two decimals is less than EPS; else returns 0
 */
 int IsEqual(double n1, double n2);
+
+/**
+*  @brief Counts arguments given to cmd
+*
+*  @details If 3 arguments are received and second is "--test", will take third argument as a path to test file.
+*  If 2 arguments are received and second is "--test", will use file defined in function's description in functions2.cpp;
+*  else will use second argument as a path to test file. Does nothing if 1 or more than 3 arguments are received
+*
+*  @param argc number of arguments received by cmd
+*
+*  @param argv[] list containing all the arguments received by cmd in "char\*" format
+*/
 
 void ArgvCount(int argc, const char** argv);

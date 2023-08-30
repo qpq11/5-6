@@ -1,0 +1,23 @@
+CC=g++
+
+CFLAGS=-c
+
+all: a
+
+test: main2WithTest.o functions2.o
+	$(CC) main2.o functions2.o
+
+a: main2.o functions2.o
+	$(CC) main2.o functions2.o
+	
+main2.o: main2.cpp
+	$(CC) $(CFLAGS) main2.cpp
+
+main2WithTest.o: main2.cpp
+	$(CC) -DTEST $(CFLAGS) main2.cpp
+	
+functions2.o: functions2.cpp
+	$(CC) $(CFLAGS) functions2.cpp
+
+clean:
+	rm *.o
