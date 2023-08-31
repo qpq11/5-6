@@ -13,16 +13,27 @@ int main(){
 	printf("%d\n", MyStrlen(s));
 	printf("%s\n", MyStrcat(a, st));
 	printf("%s\n", MyStrncat(a, s, 3));
-	printf("%p %x\n", MyStrdup(s), MyStrdup(s));
+	printf("%s\n", MyStrncpy(a, st, 2));
+	char* p = MyStrdup(s);
+	printf("%s %x\n", p, p);
+	printf("%s\n", MyFgets(a, 3, stdin));
+	free(p);
+	ClearBuffer();
+	char* t;
+	MyGetline(t, 5, '\n');
+	printf("%s", t);
 	return 0;
 }
 
-void MyPuts(const char *str)
+int MyPuts(const char *str)
 {
+	if (!str)
+		return EOF;
 	printf("%s\n", str);
+	return 1;
 }
 
-int MyStrlen (const char *str)  //prints without '\0'!
+size_t MyStrlen (const char *str)  //prints without '\0'!
 {
 	size_t i = 0;
 	while (str[i])
@@ -42,10 +53,14 @@ char *MyStrchr(const char *str, int c)
 
 char *MyStrcpy (char *s1, const char *s2)
 {
-	for(size_t i = 0; i < MyStrlen(s2); i++)
+	size_t ln = MyStrlen(s2);
+	size_t i = 0;
+	while(i < ln)
 	{
 		s1[i] = s2[i];
+		i++;
 	}
+	s1[i] = '\0';
 	return s1;
 }
 
@@ -90,15 +105,13 @@ char* MyStrncat (char* s1, const char *s2, size_t n)
 	return s1;
 }
 
-/*
+
 char* MyFgets (char* str, size_t n, FILE * stream)
 {
-	FILE * fp;
-	fp = fopen(stream, "r");
 	int i = 0;
 	int ch;
 	
-	while (((ch = fgetc(fp)) != '\n') && (ch != EOF) && (ch) && (i<n))
+	while (((ch = fgetc(stream)) != '\n') && (ch != EOF) && (ch) && (i < n))
 	{
 		*(str + i++) = ch;
 	}
@@ -115,11 +128,32 @@ char* MyFgets (char* str, size_t n, FILE * stream)
 	
 	return str;
 	
-}*/
+}
 
 char* MyStrdup (const char *src)
 {
-	char * ptr = (char *) malloc(sizeof(*src));
+	char * ptr;
+	ptr = (char*) malloc(sizeof(char) * (MyStrlen(src) + 1));
+	MyStrcpy(ptr, src);
 	return ptr;
 }
 
+void MyGetline(char* str, int strsize, char sep)
+{
+	int i = 0;
+	int ch;
+	while (((ch = fgetc(stdin)) != sep) && (i < strsize))
+	{
+		*(str + i++) = ch;
+	}
+	*(str + i) = '\0';
+	return;
+}
+
+void ClearBuffer(void)
+{
+	int ch;
+	while(((ch = getchar()) != '\n') && (ch != EOF)){
+		continue;
+	}
+}
