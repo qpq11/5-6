@@ -3,7 +3,7 @@
 #include <assert.h>
 #include <math.h>
 #include <string.h>
-#include "header2.h"
+#include "header.h"
 #include <windows.h>
 
 void SetColour(Colour colourname)

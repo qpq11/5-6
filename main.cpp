@@ -3,7 +3,7 @@
 #include "TXLib.h"
 #include <math.h>
 #include <string.h>
-#include "header2.h"
+#include "header.h"
 #include <windows.h>
 
 int main(int argc, const char **argv)
